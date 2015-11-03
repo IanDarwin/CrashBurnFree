@@ -8,3 +8,7 @@ It is composed of the following sub-projects:
 
 . javaclient - the Java client code; no external dependencies
 . javaserver - an implementation of a Java EE (REST JAXRS) server
+
+Status: javaclient seems to "work", but javaserver is, ahem, not quite
+finished. Or at least not tried. And, there needs to be a "common"
+library project for code shared between them.
