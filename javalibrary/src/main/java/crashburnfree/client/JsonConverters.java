@@ -44,12 +44,12 @@ public class JsonConverters {
 
 	protected static String throwableToJson(Throwable t) {
 		StringBuilder body = new StringBuilder();
-		body.append("{\"class\":\"" + t.getClass().getName() + "\",\"message\":\"" + t.getMessage() + "\",\"localizedMessage\":\"" + t.getLocalizedMessage() + "\",\"suppressed\":[]}");
+		body.append("{\"class\":\"" + t.getClass().getName() + "\",\"message\":\"" + t.getMessage() + "\",\"localizedMessage\":\"" + t.getLocalizedMessage() + "\",\"suppressed\":[]},");
 		StackTraceElement[] traceback = t.getStackTrace();
 		if (traceback != null && traceback.length != 0) {
 			body.append("\"stacktrace\":[");
 			for (StackTraceElement st : traceback) {
-				body.append("{\"methodName\":\"" + st.getMethodName() + "\",\"fileName\":\"" + st.getFileName() + "\",\"lineNumber\":" + st.getLineNumber() + ",\"className\":\"" + st.getClassName() + "\",\"nativeMethod\":" + st.isNativeMethod() + "}");
+				body.append("{\"methodName\":\"" + st.getMethodName() + "\",\"fileName\":\"" + st.getFileName() + "\",\"lineNumber\":" + st.getLineNumber() + ",\"className\":\"" + st.getClassName() + "\",\"nativeMethod\":" + st.isNativeMethod() + "},");
 			}
 			body.append("]");
 		}
