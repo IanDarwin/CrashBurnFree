@@ -2,7 +2,6 @@ package crashburnfree.client;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /** This is ugly and brutal, but avoids extra dependencies and especially conflicts
  * where somebody will have used a different version of whichever of the 26 or so
