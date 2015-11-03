@@ -29,7 +29,7 @@ public class JsonConvertersTest {
 	public void testReportToJson() {
 		Report r = new Report();
 		r.when = new Date();
-		r.location = "Torinfo, Chattalooga";
+		r.where = "Torinfo, Chattalooga";
 		r.exception = new ArrayIndexOutOfBoundsException(42);
 		String actual = JsonConverters.reportToJSON(r);
 		assertTrue(actual.contains("Chattalooga"));

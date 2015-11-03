@@ -7,7 +7,7 @@ public class Report {
 	/** When. Because Android will never support java.time, despite that it's way better */
 	public Date when;
 	/** Where the crash happened, if known (and allowed by your privacy policy) */
-	public String location;
+	public String where;
 	/** Kind of device */
 	public String device;
 	public String opSys;
@@ -16,4 +16,11 @@ public class Report {
 	public String description;
 	/** The reported error */
 	public Throwable exception;
+	
+	public void setWhen(Date when) {
+		this.when = when;
+	}
+	public Date getWhen() {
+		return when;
+	}
 }
