@@ -64,7 +64,7 @@ public class CrashBurnFree {
 
 		conn.connect();
 		
-		conn.getOutputStream().write(JsonConverters.ReportToJSON(r).getBytes());
+		conn.getOutputStream().write(JsonConverters.reportToJSON(r).getBytes());
 		conn.disconnect();
 		
 		return conn.getResponseCode();
