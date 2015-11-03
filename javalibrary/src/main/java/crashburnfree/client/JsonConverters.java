@@ -11,9 +11,9 @@ public class JsonConverters {
 	 * @param t The Throwable
 	 * @return The Throwable in JSON format
 	 */
-	public static String ReportToJSON(Report r) {
+	public static String reportToJSON(Report r) {
 		Throwable t = r.exception;
-		StringBuilder sb = new StringBuilder('{');
+		StringBuilder sb = new StringBuilder("{");
 		appendField(sb, "when", r.when);
 		appendField(sb, "location", r.location);
 		/** Kind of device */
@@ -23,7 +23,7 @@ public class JsonConverters {
 		/** User comment on what they did to cause, if available */
 		appendField(sb, "description", r.description);
 		/** The reported error */
-		sb.append("exception':").append(throwableToJson(t)).append("}");
+		sb.append("\"exception\":").append(throwableToJson(t)).append("}");
 		return sb.toString();
 	}
 	

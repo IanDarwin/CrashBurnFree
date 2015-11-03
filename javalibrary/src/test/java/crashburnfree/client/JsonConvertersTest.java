@@ -3,6 +3,8 @@ package crashburnfree.client;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 public class JsonConvertersTest {
 	
 	@Test
@@ -13,8 +15,7 @@ public class JsonConvertersTest {
 		// \"localizedMessage\":\"The best test in jest\",\"suppressed\":[]},
 		// \"stacktrace\":[{\"methodName\":\"testThrowableToJson\",\"fileName\":\"JsonConvertersTest.java\",\"lineNumber\":10,\"className\":\"crashburnfree.client.JsonConvertersTest\",\"nativeMethod\":false},
 		assertTrue("Throwable To JSON", actual.startsWith("{\"class\":\"java.lang.IllegalArgumentException\",\"message\":\"The best test in jest\""));
-		System.out.println("Actual JSON for validation:");
-		System.out.println(actual);
+	
 	}
 	
 	@Test
@@ -22,5 +23,17 @@ public class JsonConvertersTest {
 		StringBuilder sb = new StringBuilder();
 		JsonConverters.appendField(sb, "test5678", Integer.valueOf(42), false);
 		assertEquals("\"test5678\":\"42\"", sb.toString());
+	}
+	
+	@Test
+	public void testReportToJson() {
+		Report r = new Report();
+		r.when = new Date();
+		r.location = "Torinfo, Chattalooga";
+		r.exception = new ArrayIndexOutOfBoundsException(42);
+		String actual = JsonConverters.reportToJSON(r);
+		assertTrue(actual.contains("Chattalooga"));
+		System.out.println("Actual JSON for validation:");
+		System.out.println(actual);
 	}
 }

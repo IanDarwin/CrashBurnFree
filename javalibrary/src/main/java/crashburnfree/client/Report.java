@@ -5,15 +5,15 @@ import java.util.Date;
 /** This is one error report */
 public class Report {
 	/** When. Because Android will never support java.time, despite that it's way better */
-	Date when;
+	public Date when;
 	/** Where the crash happened, if known (and allowed by your privacy policy) */
-	String location;
+	public String location;
 	/** Kind of device */
-	String device;
-	String opSys;
-	String osVer;
+	public String device;
+	public String opSys;
+	public String osVer;
 	/** User comment on what they did to cause, if available */
-	String description;
+	public String description;
 	/** The reported error */
-	Throwable exception;
+	public Throwable exception;
 }
