@@ -8,7 +8,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>crasburnfree-server</name>
+	<name>crashburnfree-server</name>
 	<url>http://cjp.darwinsys.com/</url>
 
 	<properties>
