@@ -13,7 +13,8 @@ public class JsonConvertersTest {
 		// \"localizedMessage\":\"The best test in jest\",\"suppressed\":[]},
 		// \"stacktrace\":[{\"methodName\":\"testThrowableToJson\",\"fileName\":\"JsonConvertersTest.java\",\"lineNumber\":10,\"className\":\"crashburnfree.client.JsonConvertersTest\",\"nativeMethod\":false},
 		assertTrue("Throwable To JSON", actual.startsWith("{\"class\":\"java.lang.IllegalArgumentException\",\"message\":\"The best test in jest\""));
-		System.out.println("Actual JSON for validation: " + actual);
+		System.out.println("Actual JSON for validation:");
+		System.out.println(actual);
 	}
 	
 	@Test
