@@ -1,18 +1,27 @@
 package crashburnfree.javaserver;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 
 @Path("/submit")
 public class JavaServer {
 
-	@GET
-	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	@PersistenceUnit(name="ticketManor") EntityManagerFactory emf; // Web tier is multi-threaded
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Transactional(value=TxType.REQUIRED)
 	public void upload(Throwable t, @HeaderParam("Authorization") String authorization) {
 		System.out.println("JavaServer.upload: " + t);
-		// Do something with it...
+		
+		// Here you'd have to actually do something with the Throwable.
+		
 	}
 }
