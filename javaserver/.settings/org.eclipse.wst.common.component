@@ -6,9 +6,6 @@
         <dependent-module archiveName="crashburnfree-library-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/crashburnfree-library/crashburnfree-library">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="darwinsys-ee-0.0.9-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/darwinsys-ee/darwinsys-ee">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="javaserver"/>
         <property name="java-output-path" value="/javaserver/target/classes"/>
     </wb-module>
