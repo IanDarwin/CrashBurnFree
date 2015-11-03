@@ -38,32 +38,7 @@
 			<version>${javaee.version}</version>	
 			<scope>provided</scope>
 		</dependency> 
-		<dependency>
-			<groupId>com.darwinsys</groupId>
-			<artifactId>darwinsys-ee</artifactId>
-			<version>0.0.9-SNAPSHOT</version>
-		</dependency>
  
-		<!-- DeltaSpike Data -->
-		<dependency>
-			<groupId>org.apache.deltaspike.modules</groupId>
-			<artifactId>deltaspike-data-module-api</artifactId>
-			<version>${deltaspike.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.deltaspike.modules</groupId>
-			<artifactId>deltaspike-data-module-impl</artifactId>
-			<version>${deltaspike.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<!-- javassist needed on classpath for dynamic code gen -->
-		<dependency>
-			<groupId>org.javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.18.1-GA</version>
-		</dependency>		
-
 		<!-- Test early and often -->
 		<dependency>
 			<groupId>junit</groupId>
