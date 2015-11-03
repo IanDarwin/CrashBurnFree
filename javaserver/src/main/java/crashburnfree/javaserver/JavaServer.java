@@ -13,11 +13,11 @@ import javax.ws.rs.core.MediaType;
 @Path("/submit")
 public class JavaServer {
 
-	@PersistenceUnit(name="ticketManor") EntityManagerFactory emf; // Web tier is multi-threaded
+	// @PersistenceUnit(name="crashburnfree") EntityManagerFactory emf;
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Transactional(value=TxType.REQUIRED)
+	// @Transactional(value=TxType.REQUIRED)
 	public void upload(Throwable t, @HeaderParam("Authorization") String authorization) {
 		System.out.println("JavaServer.upload: " + t);
 		
