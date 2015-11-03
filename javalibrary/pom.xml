@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.darwinsys.crashburnfree</groupId>
+	<artifactId>javalibrary</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>crasburnfree-javaserver</name>
+	<url>http://cjp.darwinsys.com/</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<javase.version>1.7</javase.version>
+		<maven.compiler.source>${javase.version}</maven.compiler.source>
+		<maven.compiler.target>${javase.version}</maven.compiler.target>
+		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
+		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
+		<javaee.version>7.0</javaee.version>
+		<primefaces.version>5.1</primefaces.version>
+		<build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
+		<deltaspike.version>1.2.1</deltaspike.version>
+	</properties>
+
+	<dependencies>
+		<!-- Java EE API -->
+		<dependency>
+			<groupId>javax</groupId>		
+			<artifactId>javaee-api</artifactId>		
+			<version>${javaee.version}</version>	
+			<scope>provided</scope>
+		</dependency> 
+		<dependency>
+			<groupId>com.darwinsys</groupId>
+			<artifactId>darwinsys-ee</artifactId>
+			<version>0.0.9-SNAPSHOT</version>
+		</dependency>
+ 
+		<!-- DeltaSpike Data -->
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-data-module-api</artifactId>
+			<version>${deltaspike.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-data-module-impl</artifactId>
+			<version>${deltaspike.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- javassist needed on classpath for dynamic code gen -->
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.18.1-GA</version>
+		</dependency>		
+
+		<!-- Test early and often -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>(4.11,5.0)</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<!-- Java EE AppServer: WildFly (JBoss) -->
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.0.2.Final</version>
+			</plugin>
+
+			<!-- Java EE AppServer: GlassFish (see https://maven-glassfish-plugin.java.net/usage.html) -->
+			<plugin>
+				<groupId>org.glassfish.maven.plugin</groupId>
+				<artifactId>maven-glassfish-plugin</artifactId>
+				<version>2.1</version>
+			</plugin>
+
+			<!-- Java EE AppServer: Apache TomEE (see http://tomee.apache.org/tomee-maven-plugin.html) -->
+			<plugin>
+				<groupId>org.apache.openejb.maven</groupId>
+				<artifactId>tomee-maven-plugin</artifactId>
+				<version>1.7.1</version>
+				<configuration>
+					<tomeeVersion>1.7.1</tomeeVersion>
+					<tomeeClassifier>plus</tomeeClassifier>
+				</configuration>
+			</plugin>
+
+			<!-- Java EE Web Container: Apache Tomcat (http://tomcat.apache.org/maven-plugin.html) -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
