@@ -8,7 +8,7 @@ import java.util.Date;
 public class CrashBurnFree {
 
 	private static final String URL =
-			"http://localhost:8080/crashburnfree/submit";
+			"http://localhost:8080/crashburnfree/rest/submit";
 	private static final String AUTH_HEADER = "Authorization";
 	
 	private static String encodeAuth(String userName, String password) {
@@ -34,6 +34,7 @@ public class CrashBurnFree {
 						r.opSys = System.getProperty("system.os.name");
 						r.osVer = System.getProperty("system.os.version");
 						r.when = new Date();
+						r.where = "Unknown";
 						r.description = "Happened on thread " + t.getName();
 						r.exception = ex;
 						try {
@@ -61,6 +62,7 @@ public class CrashBurnFree {
 		conn.setDoOutput(true);
 		conn.setAllowUserInteraction(true);
 		conn.setRequestProperty(AUTH_HEADER, authToken);
+		conn.setRequestProperty("Content-type", "text/plain"); // Tell JAX-RS we're parsing it ourselves
 
 		conn.connect();
 		

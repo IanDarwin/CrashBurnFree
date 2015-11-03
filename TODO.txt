@@ -1,0 +1,7 @@
+Server: re-create all fields of Report AND Throwable.
+
+More and better unit tests.
+
+Move handler class into client library, duh!
+
+Remove verbose printouts.

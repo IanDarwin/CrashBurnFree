@@ -26,11 +26,21 @@
 	</properties>
 
 	<dependencies>
+
+		<!-- CrashBurnFree common code -->
 		<dependency>
 			<groupId>com.darwinsys</groupId>
 			<artifactId>crashburnfree-library</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
+
+		<!--  org.json -->
+		<dependency>
+		  <groupId>org.json</groupId>
+		  <artifactId>json</artifactId>
+		  <version>20131018</version>
+		</dependency>
+            
 		<!-- Java EE API -->
 		<dependency>
 			<groupId>javax</groupId>		

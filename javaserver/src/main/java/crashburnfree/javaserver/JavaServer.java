@@ -1,10 +1,17 @@
 package crashburnfree.javaserver;
 
+import java.util.Date;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import crashburnfree.client.Report;
 
@@ -12,14 +19,43 @@ import crashburnfree.client.Report;
 public class JavaServer {
 
 	// @PersistenceUnit(name="crashburnfree") EntityManagerFactory emf;
-
+	
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.TEXT_PLAIN)
 	// @Transactional(value=TxType.REQUIRED)
-	public void upload(Report r, @HeaderParam("Authorization") String authorization) {
-		System.out.println("JavaServer.upload: " + r);
+	public Response upload(String s, @HeaderParam("Authorization") String authorization) throws Exception {
+		System.out.println("JavaServer.upload: " + s);
+try {
+		// Re-create the Report (including the Throwable) from JSON
+		Report rept = new Report();
+		JSONObject obj = new JSONObject(new JSONTokener(s));
+		rept.when = new Date(obj.getLong("when"));
+		rept.where = obj.getString("where");
+		//rept.device = obj.getString("device");
+		JSONObject throwable = obj.getJSONObject("exception");
+		String clazzName = throwable.getString("class");
+		System.out.println("Class: " + clazzName);
+		Throwable t = (Throwable)Class.forName(clazzName).newInstance();
+		JSONArray trace = throwable.getJSONArray("stacktrace");
+		StackTraceElement[] stes = new StackTraceElement[trace.length()];
+		for (int i = 0; i < trace.length(); i++) {
+			JSONObject ste = trace.getJSONObject(i);
+			stes[i] = new StackTraceElement(
+				ste.getString("className"), ste.getString("methodName"),
+				ste.getString("fileName"), ste.getInt("lineNumber"));
+		}
+		t.setStackTrace(stes);
+		rept.exception = t;
+
+		// Now you'd have to actually do something with the Report
+		// For now just print it to show it got here
+		rept.exception.printStackTrace();
 		
-		// Here you'd have to actually do something with the Throwable.
-		
+		// Indicate success
+		return Response.created(null).build();
+} catch (Exception ex) {
+	ex.printStackTrace();
+	return Response.serverError().build();
+}
 	}
 }
