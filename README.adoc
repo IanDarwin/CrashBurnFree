@@ -11,4 +11,5 @@ with "crashburnfree-" instead of "java"):
 . javaclient - the Java client code; no external dependencies;
 . javaserver - an implementation of a Java EE (REST JAXRS) server
 
-Status: javaclient seems to work, but javaserver is not yet "declared operational".
+Status: The demo basically works; there is some elaboration and 
+refactoring still needed, some of which is listed in the TODO file.
