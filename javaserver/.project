@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>javaserver</name>
+	<name>crashburnfree-server</name>
 	<comment>Java EE REST server for CrashBurnFree</comment>
 	<projects>
 	</projects>
