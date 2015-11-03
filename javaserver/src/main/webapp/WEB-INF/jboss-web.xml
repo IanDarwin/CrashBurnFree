@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jboss-web>
-	<virtual-host>localhost</virtual-host>
+	<virtual-host>default-host</virtual-host>
 	<context-root>crashburnfree</context-root>
 </jboss-web>
