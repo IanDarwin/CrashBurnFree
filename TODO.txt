@@ -1,6 +1,6 @@
 Handle "cause" exceptions! Need a recursive jsonToException method.
 
-Move register() method into client code, after making more things settable.
+Move register() method into library? Only after making more things settable.
 	Static set methods? Better: a CustomizeReport callback.
 
 Do something with that nice shiny Authorization header.
