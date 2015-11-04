@@ -31,7 +31,12 @@ try {
 		JSONObject obj = new JSONObject(new JSONTokener(s));
 		rept.when = new Date(obj.getLong("when"));
 		rept.where = obj.getString("where");
-		//rept.device = obj.getString("device");
+		rept.device = obj.getString("device");
+		rept.opSys = obj.getString("opSys");
+		rept.osVer = obj.getString("osVer");
+		rept.description = obj.getString("description");
+
+		// Re-create the Throwable
 		JSONObject throwable = obj.getJSONObject("exception");
 		String clazzName = throwable.getString("class");
 		System.out.println("Class: " + clazzName);

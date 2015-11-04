@@ -31,8 +31,8 @@ public class CrashBurnFree {
 						System.out.println(
 								"CrashBurnFree.handler: Exception was: " + ex.toString());
 						Report r = new Report();
-						r.opSys = System.getProperty("system.os.name");
-						r.osVer = System.getProperty("system.os.version");
+						r.opSys = System.getProperty("os.name");
+						r.osVer = System.getProperty("os.version");
 						r.when = new Date();
 						r.where = "Unknown";
 						r.description = "Happened on thread " + t.getName();
