@@ -1,10 +1,12 @@
-Move Register method into client code, after making more things settable.
-	Static set methods? Better: a CustomizeReport callback.
-
 Handle "cause" exceptions! Need a recursive jsonToException method.
 
+Move register() method into client code, after making more things settable.
+	Static set methods? Better: a CustomizeReport callback.
+
+Do something with that nice shiny Authorization header.
+
 Server: Handle any strange failures.
-	If exception class not found, maybe synthesize it w/ asm/javassist?
+	If exception class throws ClassNotFound, synthesize it w/ asm/javassist?
 
 More and better unit tests.
 
