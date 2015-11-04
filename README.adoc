@@ -23,5 +23,11 @@ deployment there anyway.
 
 The software works. 
 
+At least in the sense that it converts a Throwable into JSON,
+sends it via REST, and re-constructs it such that printStackTrace()
+gives the same output on the sending client and the receiving server
+implementation. Speaking of implementation, implementation of actual
+notification (email the dev team?) is left as an exercise for the reader.
+
 There is always more elaboration and refactoring one could do, 
 some of which is listed in the TODO file.
