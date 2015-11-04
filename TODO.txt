@@ -1,7 +1,10 @@
-Server: re-create all fields of Report AND Throwable.
+Move Register method into client code, after making more things settable.
+	Static set methods? Better: a CustomizeReport callback.
+
+Handle "cause" exceptions! Need a recursive jsonToException method.
+
+Server: Handle any strange failures.
+	If exception class not found, maybe synthesize it w/ asm/javassist?
 
 More and better unit tests.
 
-Move handler class into client library, duh!
-
-Remove verbose printouts.

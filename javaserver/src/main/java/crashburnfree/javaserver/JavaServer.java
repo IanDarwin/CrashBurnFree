@@ -28,18 +28,17 @@ public class JavaServer {
 try {
 		// Re-create the Report (including the Throwable) from JSON
 		Report rept = new Report();
-		JSONObject obj = new JSONObject(new JSONTokener(s));
-		rept.when = new Date(obj.getLong("when"));
-		rept.where = obj.getString("where");
-		rept.device = obj.getString("device");
-		rept.opSys = obj.getString("opSys");
-		rept.osVer = obj.getString("osVer");
-		rept.description = obj.getString("description");
+		JSONObject root = new JSONObject(new JSONTokener(s));
+		rept.when = new Date(root.getLong("when"));
+		rept.where = root.getString("where");
+		rept.opSys = root.getString("opSys");
+		rept.osVer = root.getString("osVer");
+		rept.device = root.getString("device");
+		rept.description = root.getString("description");
 
 		// Re-create the Throwable
-		JSONObject throwable = obj.getJSONObject("exception");
+		JSONObject throwable = root.getJSONObject("exception");
 		String clazzName = throwable.getString("class");
-		System.out.println("Class: " + clazzName);
 		Throwable t = (Throwable)Class.forName(clazzName).newInstance();
 		JSONArray trace = throwable.getJSONArray("stacktrace");
 		StackTraceElement[] stes = new StackTraceElement[trace.length()];
@@ -54,6 +53,7 @@ try {
 
 		// Now you'd have to actually do something with the Report
 		// For now just print it to show it got here
+		System.out.println(rept);
 		rept.exception.printStackTrace();
 		
 		// Indicate success

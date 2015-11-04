@@ -17,10 +17,8 @@ public class Report {
 	/** The reported error */
 	public Throwable exception;
 	
-	public void setWhen(Date when) {
-		this.when = when;
-	}
-	public Date getWhen() {
-		return when;
+	@Override
+	public String toString() {
+		return String.format("Report: %s @ %s on %s %s. Exception: %s", when, where, opSys, osVer, exception);
 	}
 }

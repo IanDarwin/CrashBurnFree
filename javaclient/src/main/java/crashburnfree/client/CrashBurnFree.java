@@ -31,15 +31,20 @@ public class CrashBurnFree {
 						System.out.println(
 								"CrashBurnFree.handler: Exception was: " + ex.toString());
 						Report r = new Report();
+						// All the fields must be present; nulls break the library, alas.
 						r.opSys = System.getProperty("os.name");
 						r.osVer = System.getProperty("os.version");
 						r.when = new Date();
 						r.where = "Unknown";
 						r.description = "Happened on thread " + t.getName();
+						r.device = "desktop";
 						r.exception = ex;
 						try {
-							int n = send(r, encodeAuth(Long.toString(devNumber), devToken));
-							System.out.println("Web service response was: " + n);
+							int status = send(r, encodeAuth(Long.toString(devNumber), devToken));
+							System.out.println("Web service response was: " + status);
+							if (status != 201) {
+								System.out.println("... But I expected a 201 (Created)!!");
+							}
 						} catch (Exception e) {
 							System.err.println("Failed to send exception to reporter: " + ex);
 							// The end of the line - we give up
