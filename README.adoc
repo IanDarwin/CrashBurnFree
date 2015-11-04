@@ -1,7 +1,8 @@
 = CrashBurnFree
 
 CrashBurnFree is a free crash reporting tool for Java (and potentially other languages).
-The name is a pun, as (a) it's _free_ to use and modify  and (b) one over-arching goal of Software Checking Tools 
+The name is a pun, as (a) it's _free_ to use and modify and 
+(b) one over-arching goal of Software Checking Tools 
 is to _free_ you from crashing and burning...
 
 It is composed of the following sub-directories, each of which is both
@@ -12,5 +13,15 @@ with "crashburnfree-" instead of "java"):
 . javaclient - the Java client code and demo; no external dependencies;
 . javaserver - an implementation of a Java EE (REST JAXRS) server
 
-Status: The demo basically works; there is some elaboration and 
-refactoring still needed, some of which is listed in the TODO file.
+The library and client are free of external dependencies, to avoid
+conflicts (it writes JSON directly instead of choosing one of the two
+dozen Java-based JSON toolsets, because that will surely lead to conflicts).
+The server uses the json.org parser because, well, you have to do a
+deployment there anyway.
+
+== Status
+
+The software works. 
+
+There is always more elaboration and refactoring one could do, 
+some of which is listed in the TODO file.
