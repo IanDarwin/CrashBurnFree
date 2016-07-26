@@ -7,7 +7,7 @@ package crashburnfree.client;
 public class JsonConverters {
 	/**
 	 * Express a Report in JSON format
-	 * @param t The Report
+	 * @param r The Report
 	 * @return The Throwable in JSON format
 	 */
 	public static String reportToJSON(Report r) {

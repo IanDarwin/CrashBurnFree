@@ -4,7 +4,7 @@ import java.util.Date;
 
 /** This is one error report */
 public class Report {
-	/** When. Because Android will never support java.time, despite that it's way better */
+	/** When. Because Android does not yet support java.time, despite that it's way better */
 	public Date when;
 	/** Where the crash happened, if known (and allowed by your privacy policy) */
 	public String where;
