@@ -7,11 +7,14 @@ import java.util.Date;
 
 /**
  * The main Client for CBF.
+ * Usage: 
+ *	-- call register() at the start of your application;
+ *	-- call send() when you catch an Exception.
  * @author Ian Darwin
  */
 public class CrashBurnFree {
 
-	private static final String URL =
+	public static final String DEMO_URL =
 			"http://localhost:8080/crashburnfree/rest/submit";
 	private static final String AUTH_HEADER = "Authorization";
 	
@@ -20,7 +23,13 @@ public class CrashBurnFree {
 		return new String(Base64.getEncoder().encode(cred.getBytes()));
 	}
 
-	public static void register(long devNumber, String devToken) {
+	/**
+	 * Register the service.
+	 * @param url The URL of YOUR CBF server
+	 * @param devNumber Your Developer number
+	 * @param devToken Your developer password or authtoken
+	 */
+	public static void register(String url, long devNumber, String devToken) {
 		Thread.UncaughtExceptionHandler old = Thread.getDefaultUncaughtExceptionHandler();
 		if (old != null) {
 			System.err.println("Replacing old exception catcher " + old);
@@ -44,7 +53,7 @@ public class CrashBurnFree {
 						r.device = "desktop";
 						r.exception = ex;
 						try {
-							int status = send(r, encodeAuth(Long.toString(devNumber), devToken));
+							int status = send(url, r, encodeAuth(Long.toString(devNumber), devToken));
 							System.out.println("Web service response was: " + status);
 							if (status != 201) {
 								System.out.println("... But I expected a 201 (Created)!!");
@@ -68,7 +77,7 @@ public class CrashBurnFree {
 	 * @return The Throwable in JSON format
 	 * @throws java.lang.Exception In case of failure.
 	 */
-	public static int send(Report r, String authToken) throws Exception {
+	public static int send(String URL, Report r, String authToken) throws Exception {
 		URL url = new URL(URL);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setDoInput(true);
