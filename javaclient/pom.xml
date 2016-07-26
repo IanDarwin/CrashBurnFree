@@ -42,6 +42,12 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.darwinsys</groupId>
+			<artifactId>crashburnfree-library</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
 		<!-- Test early and often -->
 		<dependency>
 			<groupId>junit</groupId>
