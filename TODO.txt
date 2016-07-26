@@ -1,5 +1,7 @@
 Handle "cause" exceptions! Need a recursive jsonToException method.
 
+Builder pattern for Report object; build() to test for required fields?
+
 Move register() method into library? Only after making more things settable.
 	Static set methods? Better: a CustomizeReport callback.
 
