@@ -5,6 +5,10 @@ import java.net.URL;
 import java.util.Base64;
 import java.util.Date;
 
+/**
+ * The main Client for CBF.
+ * @author Ian Darwin
+ */
 public class CrashBurnFree {
 
 	private static final String URL =
@@ -54,11 +58,15 @@ public class CrashBurnFree {
 		System.out.println("CrashBurnFree.register(): registered successfully.");
 	}
 	
-	/** This is ugly and brutal, but avoids extra dependencies and especially conflicts
+	/**
+	 * Send the report!
+	 * Generates JSON directly; this is UGLY and brutal, but avoids extra dependencies and especially conflicts
 	 * where somebody will have used a different and incompatible version of whichever of the 26 or so
 	 * Java JSON parsers we choose...
-	 * @param t The Throwable
+	 * @param r The Throwable
+	 * @param authToken Your CBF authentication token
 	 * @return The Throwable in JSON format
+	 * @throws java.lang.Exception In case of failure.
 	 */
 	public static int send(Report r, String authToken) throws Exception {
 		URL url = new URL(URL);
