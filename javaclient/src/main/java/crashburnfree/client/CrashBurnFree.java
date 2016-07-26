@@ -7,9 +7,11 @@ import java.util.Date;
 
 /**
  * The main Client for CBF.
- * Usage: 
- *	-- call register() at the start of your application;
- *	-- call send() when you catch an Exception.
+ * Usage: call register() at the start of your application.
+ * We will call send() when you don't catch an Exception (using UncaughtExceptionHandler).
+ * You may call send() when you do catch an Exception.
+ * N.B. The URL passed into register() is saved in a static field on the grounds that you
+ * are not going to try to use two instances in the same JVM / ClassLoader.
  * @author Ian Darwin
  */
 public class CrashBurnFree {
@@ -17,6 +19,9 @@ public class CrashBurnFree {
 	public static final String DEMO_URL =
 			"http://localhost:8080/crashburnfree/rest/submit";
 	private static final String AUTH_HEADER = "Authorization";
+
+	// Set in register; assume only one registration per JVM/classloader.
+	private static String sUrl;
 	
 	private static String encodeAuth(String userName, String password) {
 		String cred = userName + ":" + password;
@@ -53,7 +58,8 @@ public class CrashBurnFree {
 						r.device = "desktop";
 						r.exception = ex;
 						try {
-							int status = send(url, r, encodeAuth(Long.toString(devNumber), devToken));
+							CrashBurnFree.sUrl = url;
+							int status = send(r, encodeAuth(Long.toString(devNumber), devToken));
 							System.out.println("Web service response was: " + status);
 							if (status != 201) {
 								System.out.println("... But I expected a 201 (Created)!!");
@@ -77,9 +83,8 @@ public class CrashBurnFree {
 	 * @return The Throwable in JSON format
 	 * @throws java.lang.Exception In case of failure.
 	 */
-	public static int send(String URL, Report r, String authToken) throws Exception {
-		URL url = new URL(URL);
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	public static int send(Report r, String authToken) throws Exception {
+		HttpURLConnection conn = (HttpURLConnection) new URL(sUrl).openConnection();
 		conn.setDoInput(true);
 		conn.setDoOutput(true);
 		conn.setAllowUserInteraction(true);
