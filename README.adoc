@@ -4,6 +4,7 @@ CrashBurnFree is a free crash reporting tool for Java (and potentially other lan
 The name is a pun, as (a) it's _free_ to use and modify and 
 (b) one over-arching goal of Software Checking Tools 
 is to _free_ you from crashing and burning...
+But you know you will anyway... occasionally...
 
 It is composed of the following sub-directories, each of which is both
 a Maven project and an Eclipse/M2E project (the Eclipse project names begin
